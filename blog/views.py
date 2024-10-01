@@ -21,6 +21,12 @@ def post_detail(request, slug):
 
     ``post``
         An instance of :model:`blog.Post`.
+    ``comments``
+        All approved comments related to the post`.
+    ``comment_count``
+        A count of approved comments related to the post`.
+    ``comment_form``
+        An instance of :form:`blog.CommentForm`.
 
     **Template:**
 
@@ -40,8 +46,8 @@ def post_detail(request, slug):
             comment.post = post
             comment.save()
             messages.add_message(
-            request, messages.SUCCESS,
-            'Comment submitted and awaiting approval'
+                request, messages.SUCCESS,
+                'Comment submitted and awaiting approval'
             )
 
     comment_form = CommentForm()
@@ -59,7 +65,19 @@ def post_detail(request, slug):
 
 def comment_edit(request, slug, comment_id):
     """
-    view to edit comments
+    Display and individual comment for edit
+    **Context**
+
+    ``post``
+        An instance of :model:`blog.Post`.
+    ``comments``
+        All approved comments related to the post`.
+    ``comment_form``
+        An instance of :form:`blog.CommentForm`.
+
+    **Template:**
+
+    :template:`blog/post_detail.html`
     """
     if request.method == "POST":
 

@@ -5,6 +5,9 @@ from cloudinary.models import CloudinaryField
 
 
 class About(models.Model):
+    """
+    Stores text and images in the about section
+    """
     title = models.CharField(max_length=200)
     updated_on = models.DateTimeField(auto_now=True)
     featured_image = CloudinaryField('image', default='placeholder')
@@ -15,6 +18,9 @@ class About(models.Model):
 
 
 class CollaborateRequest(models.Model):
+    """
+    Allows authorsied users to submit collaboration requests
+    """
     name = models.CharField(max_length=200)
     email = models.EmailField()
     message = models.TextField()

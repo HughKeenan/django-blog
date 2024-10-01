@@ -5,6 +5,9 @@ from django_summernote.admin import SummernoteModelAdmin
 
 @admin.register(About)
 class AboutAdmin(SummernoteModelAdmin):
+    """
+    Allows use of summernote editor on content field of about page by superuser
+    """
     summernote_fields = ('content',)
 
 # Note: admin.ModelAdmin is the standard way of registering
@@ -16,5 +19,7 @@ class AboutAdmin(SummernoteModelAdmin):
 
 @admin.register(CollaborateRequest)
 class CollaborateRequestAdmin(admin.ModelAdmin):
-
+    """
+    Displays collaboration requests and allows them to be marked as read
+    """
     list_display = ('message', 'read',)
